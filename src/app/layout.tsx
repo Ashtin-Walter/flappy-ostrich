@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: {
     template: '%s | Flappy Ostrich',
-    default: 'Flappy Ostrich - Fun Browser Game',
+    default: 'Flappy Ostrich',
   },
   description: 'Play Flappy Ostrich, a fun and challenging browser-based game!',
   keywords: ['game', 'flappy', 'ostrich', 'browser game'],

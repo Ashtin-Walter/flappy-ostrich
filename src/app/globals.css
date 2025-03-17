@@ -41,8 +41,17 @@ html {
   50% { transform: translateY(-5px) rotate(-10deg); }
 }
 
+@keyframes sway {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
 .animate-bounce {
   animation: bounce 0.6s infinite;
+}
+
+.animate-sway {
+  animation: sway 3s ease-in-out infinite;
 }
 
 /* Game utility classes */

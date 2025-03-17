@@ -1,0 +1,78 @@
+.ostrich-sprite {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  background-color: #777;
+  border-radius: 6px;
+  transform-origin: center;
+  animation: idle 1s ease-in-out infinite;
+}
+
+/* Body details */
+.ostrich-sprite::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 8px;
+  background-color: #666;
+  left: -2px;
+  top: 8px;
+  border-radius: 4px;
+  transform-origin: right;
+  transition: transform 0.1s;
+}
+
+/* Head and neck */
+.ostrich-sprite::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 20px;
+  background-color: #777;
+  right: -6px;
+  top: -14px;
+  border-radius: 4px;
+  box-shadow: 
+    6px -2px 0 -2px #555,  /* beak */
+    4px -4px 0 -2px #000;  /* eye */
+}
+
+/* Legs */
+.ostrich-sprite .legs {
+  position: absolute;
+  width: 4px;
+  height: 12px;
+  background-color: #555;
+  bottom: -10px;
+  left: 8px;
+  box-shadow: 
+    8px 0 0 0 #555,
+    0 8px 0 -2px #444,
+    8px 8px 0 -2px #444;
+}
+
+/* Tail feathers */
+.ostrich-sprite .tail {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background-color: #666;
+  left: -4px;
+  top: 0;
+  border-radius: 4px;
+  transform: rotate(-15deg);
+}
+
+.ostrich-sprite.flapping::before {
+  animation: wingFlap 0.2s ease-in-out infinite;
+}
+
+@keyframes wingFlap {
+  0%, 100% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(-25deg) skewX(-10deg); }
+}
+
+@keyframes idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+}

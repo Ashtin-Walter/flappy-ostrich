@@ -275,22 +275,53 @@ export const Game = () => {
                 top: elem.y,
                 transform: `translate(-50%, -50%) scale(${elem.size})`,
                 fontSize: elem.type === 'cloud' ? '3rem' : '2.5rem',
-                zIndex: elem.type === 'cloud' ? 1 : 2,
+                zIndex: 1, // Lower z-index for background elements
               }}
             >
               {elem.type === 'cloud' ? '☁️' : '🌳'}
             </div>
           ))}
 
-        {!isPlaying && !gameOver && (
-          <button 
-            onClick={startGame}
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      bg-yellow-500 text-white px-6 py-3 rounded-full font-bold
-                      hover:bg-yellow-600 transition-colors"
-          >
-            Start Game
-          </button>
+        {!isPlaying && (
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                         bg-white/90 p-8 rounded-lg shadow-lg text-center min-w-[300px]"
+               style={{ zIndex: 50 }}> {/* High z-index for menu overlay */}
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">
+              {gameOver ? 'Game Over!' : 'Flappy Ostrich'}
+            </h2>
+            
+            {gameOver && (
+              <div className="mb-6 space-y-2">
+                <p className="text-xl text-gray-700">Score: {score}</p>
+                <p className="text-xl text-gray-700">High Score: {highScore}</p>
+              </div>
+            )}
+
+            <div className="space-y-4">
+              <button 
+                onClick={startGame}
+                className="w-full bg-yellow-500 text-white px-6 py-3 rounded-full font-bold
+                          hover:bg-yellow-600 transition-colors"
+              >
+                {gameOver ? 'Play Again' : 'Start Game'}
+              </button>
+              
+              <button 
+                onClick={() => window.location.href = 'https://github.com/AshtinJW-Dev/flappy-ostrich'}
+                className="w-full bg-gray-600 text-white px-6 py-3 rounded-full font-bold
+                          hover:bg-gray-700 transition-colors"
+              >
+                View Source
+              </button>
+              
+              {!gameOver && (
+                <div className="mt-6 text-sm text-gray-600">
+                  <p>Press SPACE or click to jump</p>
+                  <p>Avoid the obstacles and survive!</p>
+                </div>
+              )}
+            </div>
+          </div>
         )}
 
         {isPlaying && (
@@ -309,21 +340,6 @@ export const Game = () => {
             ))}
             <Score score={score} />
           </>
-        )}
-
-        {gameOver && (
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-            <h2 className="text-2xl font-bold mb-4">Game Over!</h2>
-            <p className="mb-2">Score: {score}</p>
-            <p className="mb-4">High Score: {highScore}</p>
-            <button 
-              onClick={startGame}
-              className="bg-yellow-500 text-white px-6 py-3 rounded-full font-bold
-                        hover:bg-yellow-600 transition-colors"
-            >
-              Play Again
-            </button>
-          </div>
         )}
       </div>
     </div>

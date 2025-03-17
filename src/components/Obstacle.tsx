@@ -10,8 +10,10 @@ const Obstacle: React.FC<ObstacleProps> = ({ position, gap, size }) => {
   const pipeStyle = {
     position: 'absolute',
     width: `${size.width}px`,
-    backgroundColor: '#2da44e',
+    background: 'linear-gradient(90deg, #2da44e 0%, #238636 100%)',
     border: '2px solid #216e39',
+    borderRadius: '4px',
+    boxShadow: '0 0 10px rgba(0,0,0,0.2), inset 0 0 5px rgba(255,255,255,0.2)',
     zIndex: 10,
   } as const;
 
