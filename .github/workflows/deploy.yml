@@ -25,4 +25,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/  # Next.js exports static files here
-          server-dir: /public_html/flappy-ostrich/
+          server-dir: /flappy-ostrich/
