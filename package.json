@@ -1,0 +1,29 @@
+{
+  "name": "flappy-ostrich",
+  "version": "1.0.0",
+  "description": "A Flappy Bird inspired game featuring an ostrich.",
+  "license": "MIT",
+  "author": "Ashtin Walter",
+  "type": "commonjs",
+  "main": "src/app/page.tsx",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "typescript": "5.8.2"
+  }
+}
