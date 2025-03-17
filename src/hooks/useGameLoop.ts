@@ -1,7 +1,6 @@
-// filepath: flappy-ostrich/src/hooks/useGameLoop.ts
 import { useEffect, useRef } from 'react';
 
-const useGameLoop = (callback: () => void) => {
+const useGameLoop = (callback: (deltaTime: number) => void) => {
   const requestRef = useRef<number | null>(null);
   const previousTimeRef = useRef<number>(0);
 
@@ -21,7 +20,7 @@ const useGameLoop = (callback: () => void) => {
         cancelAnimationFrame(requestRef.current);
       }
     };
-  }, []);
+  }, [callback]); // Add callback to dependencies
 };
 
 export default useGameLoop;
