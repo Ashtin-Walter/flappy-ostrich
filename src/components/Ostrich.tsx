@@ -1,4 +1,8 @@
-import { OstrichProps } from './Game'
+type OstrichProps = {
+  position: { x: number; y: number };
+  size: { width: number; height: number };
+};
+
 import { useState, useEffect } from 'react'
 import OstrichSprite from './OstrichSprite'
 
