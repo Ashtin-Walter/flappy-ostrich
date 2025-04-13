@@ -6,6 +6,7 @@
   border-radius: 6px;
   transform-origin: center;
   animation: idle 1s ease-in-out infinite;
+  will-change: transform; /* Optimize for animations */
 }
 
 /* Body details */
@@ -19,7 +20,8 @@
   top: 8px;
   border-radius: 4px;
   transform-origin: right;
-  transition: transform 0.1s;
+  transition: transform 0.05s; /* Faster transitions */
+  will-change: transform; /* Optimize for animations */
 }
 
 /* Head and neck */
@@ -64,15 +66,34 @@
 }
 
 .ostrich-sprite.flapping::before {
-  animation: wingFlap 0.2s ease-in-out infinite;
+  animation: wingFlap 0.1s ease-in-out; /* Faster animation */
 }
 
 @keyframes wingFlap {
-  0%, 100% { transform: rotate(0deg) skewX(0deg); }
-  50% { transform: rotate(-25deg) skewX(-10deg); }
+  0% { transform: rotate(0deg) skewX(0deg); }
+  50% { transform: rotate(-35deg) skewX(-15deg); } /* More exaggerated movement */
+  100% { transform: rotate(0deg) skewX(0deg); }
 }
 
 @keyframes idle {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(2px); }
+  50% { transform: translateY(-3px); } /* Subtler idle animation */
+}
+
+/* Added responsive styles for game container */
+@media (max-width: 768px) {
+  .game-container {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.obstacle {
+  animation: moveObstacle linear infinite;
+  will-change: transform; /* Optimize for animations */
+}
+
+@keyframes moveObstacle {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
 }

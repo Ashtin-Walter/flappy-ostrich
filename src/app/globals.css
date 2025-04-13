@@ -24,6 +24,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body{
+  background-color: #111827;
+}
+
 /* Game specific animations */
 @keyframes float {
   0%, 100% { transform: translateY(0); }

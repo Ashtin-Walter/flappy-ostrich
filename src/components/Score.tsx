@@ -1,23 +1,26 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface ScoreProps {
-  score: number
-  style?: React.CSSProperties
+  score: number;
 }
 
-const Score: React.FC<ScoreProps> = ({ score, style }) => {
+const Score: React.FC<ScoreProps> = ({ score }) => {
   return (
     <div 
-      className="score absolute top-8 left-1/2 transform -translate-x-1/2 z-50"
-      style={style}
+      className="absolute top-4 right-4 text-4xl font-bold text-white text-shadow-lg"
+      style={{
+        textShadow: '0 2px 5px rgba(0, 0, 0, 0.5)',
+        zIndex: 20,
+        background: 'linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2))',
+        padding: '6px 12px',
+        borderRadius: '8px',
+        backdropFilter: 'blur(3px)',
+      }}
     >
-      <div className="bg-yellow-500/90 px-6 py-3 rounded-full shadow-lg backdrop-blur-sm">
-        <h2 className="text-3xl font-bold text-white">
-          Score: {score}
-        </h2>
-      </div>
+      {score.toString().padStart(3, '0')}
     </div>
   );
 };
 
-export default Score;
+// Optimize with memo to prevent unnecessary re-renders
+export default memo(Score);

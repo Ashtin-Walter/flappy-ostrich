@@ -10,14 +10,30 @@ export const GAME_CONFIG = {
 
 export const checkCollision = (
   ostrichPos: { x: number; y: number; width: number; height: number },
-  obstacle: { x: number; y: number; width: number; height: number }
+  obstacle: { x: number; y: number; width: number; height: number; gap?: number }
 ): boolean => {
-  return (
+  // If no gap is provided, use standard rectangle collision
+  if (!obstacle.gap) {
+    return (
+      ostrichPos.x < obstacle.x + obstacle.width &&
+      ostrichPos.x + ostrichPos.width > obstacle.x &&
+      ostrichPos.y < obstacle.y + obstacle.height &&
+      ostrichPos.y + ostrichPos.height > obstacle.y
+    );
+  }
+  
+  // For pipe obstacles with a gap
+  const topPipeCollision = 
     ostrichPos.x < obstacle.x + obstacle.width &&
     ostrichPos.x + ostrichPos.width > obstacle.x &&
-    ostrichPos.y < obstacle.y + obstacle.height &&
-    ostrichPos.y + ostrichPos.height > obstacle.y
-  );
+    ostrichPos.y < obstacle.y;
+    
+  const bottomPipeCollision = 
+    ostrichPos.x < obstacle.x + obstacle.width &&
+    ostrichPos.x + ostrichPos.width > obstacle.x &&
+    ostrichPos.y + ostrichPos.height > obstacle.y + obstacle.gap;
+    
+  return topPipeCollision || bottomPipeCollision;
 };
 
 export const generateObstacle = () => {
