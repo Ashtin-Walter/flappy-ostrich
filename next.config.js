@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: '/flappy-ostrich',
+  basePath: '/games/original/flappy-ostrich',
 };
 
 module.exports = nextConfig;
